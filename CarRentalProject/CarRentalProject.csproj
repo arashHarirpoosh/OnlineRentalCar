@@ -15,8 +15,6 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\ViewModels\" />
     <Folder Include="Pages\" />
   </ItemGroup>
 
