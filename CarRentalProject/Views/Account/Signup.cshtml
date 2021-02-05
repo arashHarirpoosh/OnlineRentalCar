@@ -1,0 +1,64 @@
+﻿@model SignupModel
+@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CarRental</title>
+    <link href="/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand ml-2">CAR RENTAL STORE</span>
+    </div>
+    <div class="m-1 p-1">
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+        <form asp-action="Signup" asp-controller="Account" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <div asp-validation-for="Name" class="text-danger"></div>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <div asp-validation-for="Password" class="text-danger"></div>
+                <input asp-for="Password" type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <div asp-validation-for="ConfirmPassword" class="text-danger"></div>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <div asp-validation-for="Email" class="text-danger"></div>
+                <input asp-for="Email" type="email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="IdNumber"></label>
+                <div asp-validation-for="IdNumber" class="text-danger"></div>
+                <input asp-for="IdNumber" type="number" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <div asp-validation-for="PhoneNumber" class="text-danger"></div>
+                <input asp-for="PhoneNumber" type="number" class="form-control" />
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="AcceptPrivacyPolicy"></label>
+                    <div asp-validation-for="AcceptPrivacyPolicy" class="text-danger"></div>
+                    <input style="align-self" asp-for="AcceptPrivacyPolicy" type="checkbox" class="form-control" />
+                </div>*@
+            <ul>
+                <li>
+                    <div><label asp-for="AcceptPrivacyPolicy"></label></div>
+                    <div><input asp-for="AcceptPrivacyPolicy" type="checkbox" /></div>
+                </li>
+            </ul>
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

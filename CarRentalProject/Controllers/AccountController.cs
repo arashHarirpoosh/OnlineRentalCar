@@ -42,7 +42,7 @@ namespace CarRentalProject.Controllers
                     if ((await signInManager.PasswordSignInAsync(user,
                             loginModel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/Admin");
+                        return Redirect(loginModel?.ReturnUrl ?? "/");
                     }
                 }
             }
@@ -64,9 +64,18 @@ namespace CarRentalProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = new IdentityUser
+                {
+                    UserName = signupModel.Name,
+                    Email = signupModel.Email,
+                    PhoneNumber = signupModel.PhoneNumber
+                };
+                var result = await userManager.CreateAsync(user, signupModel.Password);
+                if (result.Succeeded)
+                    return Redirect(signupModel?.ReturnUrl ?? "/Account/Login");
 
             }
-            ModelState.AddModelError("", "Invalid name or password");
+            ModelState.AddModelError("", "This User Already Exists");
             return View(signupModel);
         }
 
