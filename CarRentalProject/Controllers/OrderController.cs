@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RentalFull.Models;
+using CarRentalProject.Models;
 using System.Linq;
 
-namespace RentalFull.Controllers
+namespace CarRentalProject.Controllers
 {
     public class OrderController : Controller
     {
