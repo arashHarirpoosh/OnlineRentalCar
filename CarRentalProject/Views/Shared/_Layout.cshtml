@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -11,13 +14,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col navbar-brand">CAR RENTAL STORE</div>
-                <div class="col-6 text-right">
-                    @if (User.Identity.Name == "Admin")
-                    {
-                        <a asp-page="/Admin/Index"> admin panel </a>
-                    }
-                    <vc:cart-summary />
-                </div>
+                @*<div class="col-6 text-right">*@
+            <div class="col-2 text-right">
+                @if (User.Identity.Name == "Admin")
+                {
+                    @*<a asp-page="/Admin/Index"> admin panel </a>*@
+                    <a class="btn btn-sm btn-danger" href="/Admin">Admin Panel</a>
+
+                }
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    @*<a asp-controller="Account" asp-action="Logout">Logout</a>*@
+                    <a class="btn btn-sm btn-primary" href="/account/logout">Log Out</a>
+                }
+                <vc:cart-summary />
+            </div>
             </div>
         </div>
     </div>
