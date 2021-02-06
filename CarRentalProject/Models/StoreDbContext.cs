@@ -14,10 +14,5 @@ namespace CarRentalProject.Models
 
         public DbSet<Car> Cars { get; set; }
         public DbSet<Order> Orders { get; set; }
-
-        internal void AttachRange(IEnumerable<Car> enumerable)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
